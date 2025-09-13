@@ -9,6 +9,7 @@ export default function Home() {
   const [darkMode, setDarkMode] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
   // Enhanced state for AI Chatbot
@@ -37,6 +38,11 @@ export default function Home() {
 
   useEffect(() => {
     setIsMounted(true);
+    // Check if user is on mobile device
+    const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+    if (isMobile) {
+      // Disable some animations on mobile for better performance
+    }
   }, []);
 
   // FIXED: Added roles.length to the dependency array
@@ -95,6 +101,7 @@ export default function Home() {
 
   const scrollToSection = (id: string) => {
     setActiveSection(id);
+    setIsMobileMenuOpen(false); // Close mobile menu after clicking
     const element = document.getElementById(id);
     if (element) {
       window.scrollTo({
@@ -300,7 +307,17 @@ export default function Home() {
   // 3D floating element rotation based on mouse position
   const rotateX = isMounted ? (mousePosition.y / window.innerHeight) * 10 - 5 : 0;
   const rotateY = isMounted ? (mousePosition.x / window.innerWidth) * 10 - 5 : 0;
-
+  
+  const mobileMenuVariants = {
+    open: { opacity: 1, x: 0 },
+    closed: { opacity: 0, x: "-100%" }
+  };
+  
+  // Mobile menu toggle function
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(prev => !prev);
+  };
+  
   return (
     <div
       className={`font-sans scroll-smooth overflow-x-hidden transition-colors duration-300 ${darkMode ? 'dark' : ''}`}
@@ -391,8 +408,8 @@ export default function Home() {
         />
       </div>
 
-      {/* Enhanced custom cursor with trail effect */}
-      {isMounted && (
+      {/* Enhanced custom cursor with trail effect - only show on non-touch devices */}
+      {isMounted && !('ontouchstart' in window) && (
         <>
           <motion.div
             className="fixed w-8 h-8 rounded-full bg-purple-400 mix-blend-difference pointer-events-none z-50"
@@ -580,26 +597,6 @@ export default function Home() {
               <div ref={messagesEndRef} />
             </div>
 
-            {/* Quick Replies */}
-            {messages.length <= 1 && (
-              <div className="px-4 pb-2">
-                <div className="text-xs text-gray-500 mb-1">Try asking:</div>
-                <div className="flex flex-wrap gap-2">
-                  {quickReplies.map((reply, index) => (
-                    <motion.button
-                      key={index}
-                      onClick={() => handleQuickReply(reply)}
-                      className="text-xs px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      {reply}
-                    </motion.button>
-                  ))}
-                </div>
-              </div>
-            )}
-
             <div className="p-3 border-t flex" style={{ borderColor: `${colors.primary}20` }}>
               <input
                 type="text"
@@ -656,7 +653,20 @@ export default function Home() {
           >
             Harshita Upreti
           </motion.h1>
-          <div className="flex items-center space-x-6">
+          {/* Mobile menu toggle button */}
+          <button
+            onClick={toggleMobileMenu}
+            className="md:hidden w-10 h-10 rounded-full flex items-center justify-center"
+            style={{ color: colors.primary, backgroundColor: colors.card }}
+            aria-label="Toggle mobile menu"
+          >
+            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16m-7 6h7" />
+            </svg>
+          </button>
+          
+          {/* Desktop Navigation */}
+          <div className="hidden md:flex items-center space-x-6">
             {['home', 'about', 'experience', 'projects', 'skills', 'contact'].map((item) => (
               <motion.button
                 key={item}
@@ -705,6 +715,41 @@ export default function Home() {
           </div>
         </div>
       </motion.nav>
+      
+      {/* Mobile Menu */}
+      <motion.div
+        className="fixed top-0 left-0 w-full h-full bg-white/95 dark:bg-black/95 backdrop-blur-md z-40 p-8 flex flex-col items-center justify-center md:hidden"
+        style={{ backgroundColor: colors.navBg }}
+        variants={mobileMenuVariants}
+        initial="closed"
+        animate={isMobileMenuOpen ? "open" : "closed"}
+        transition={{ duration: 0.3 }}
+      >
+        <button
+          onClick={toggleMobileMenu}
+          className="absolute top-6 right-6 w-10 h-10 rounded-full flex items-center justify-center"
+          style={{ color: colors.primary, backgroundColor: colors.card }}
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+        <div className="flex flex-col space-y-6 text-2xl font-bold">
+          {['home', 'about', 'experience', 'projects', 'skills', 'contact'].map((item) => (
+            <motion.button
+              key={item}
+              onClick={() => scrollToSection(item)}
+              className={`capitalize transition-colors relative ${activeSection === item ? 'font-medium' : 'hover:text-purple-500'}`}
+              style={{ color: activeSection === item ? colors.primary : colors.text }}
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {item}
+            </motion.button>
+          ))}
+        </div>
+      </motion.div>
+
 
       {/* Hero Section */}
       <section id="home" className="min-h-screen flex flex-col items-center justify-center relative px-6 pt-20">
