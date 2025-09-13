@@ -597,7 +597,24 @@ export default function Home() {
               <div ref={messagesEndRef} />
             </div>
 
-            <div className="p-3 border-t flex" style={{ borderColor: `${colors.primary}20` }}>
+            <div className="px-4 pb-2">
+                <div className="text-xs text-gray-500 mb-1">Try asking:</div>
+                <div className="flex flex-wrap gap-2">
+                  {quickReplies.map((reply, index) => (
+                    <motion.button
+                      key={index}
+                      onClick={() => handleQuickReply(reply)}
+                      className="text-xs px-3 py-1 rounded-full bg-gray-100 dark:bg-gray-800 hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      {reply}
+                    </motion.button>
+                  ))}
+                </div>
+              </div>
+
+            <form className="p-3 border-t flex" style={{ borderColor: `${colors.primary}20` }}>
               <input
                 type="text"
                 value={inputMessage}
@@ -630,7 +647,7 @@ export default function Home() {
                   </svg>
                 )}
               </motion.button>
-            </div>
+            </form>
           </motion.div>
         )}
       </motion.div>
@@ -1327,7 +1344,12 @@ export default function Home() {
             {['github', 'linkedin', 'twitter'].map((social, idx) => (
               <motion.a
                 key={idx}
-                href="#"
+                href={
+                  social === 'github' ? 'https://github.com/harshitaupr12' :
+                  social === 'linkedin' ? 'https://www.linkedin.com/in/harshitaupr12' :
+                  social === 'twitter' ? '#' :
+                  '#'
+                }
                 className="w-10 h-10 rounded-full flex items-center justify-center neumorph hover-card"
                 style={{
                   backgroundColor: colors.card,
