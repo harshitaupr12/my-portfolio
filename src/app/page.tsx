@@ -201,7 +201,7 @@ export default function Home() {
     ) {
       return "Harshita is passionate about web development, problem-solving, and continuously learning new technologies. She enjoys building projects that solve real-world problems and enhance user experiences.";
     } else {
-      return "I'm not sure I understand. You can ask me about Harshita's:\n\n• Skills and technologies\n• Work experience\n• Projects\n• • Education\n• How to contact her\n\nWhat would you like to know?";
+      return "I'm not sure I understand. You can ask me about Harshita's:\n\n• Skills and technologies\n• Work experience\n• Projects\n• Education\n• How to contact her\n\nWhat would you like to know?";
     }
   };
 
@@ -568,7 +568,7 @@ export default function Home() {
         {!isChatbotOpen ? (
           <motion.button
             onClick={() => setIsChatbotOpen(true)}
-            className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg relative group transition-all duration-300 ease-in-out hover:scale-110 hover:rotate-6"
+            className="w-16 h-16 rounded-full flex items-center justify-center shadow-lg relative group transition-all duration-300 ease-in-out hover:scale-110 hover:rotate-6 active:scale-95"
             style={{
               background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})`,
             }}
