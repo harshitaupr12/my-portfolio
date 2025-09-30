@@ -25,7 +25,7 @@ export default function Home() {
   const [isTyping, setIsTyping] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
-  const roles = ["Frontend Developer", "Web Developer", "Software Developer"];
+  const roles = ["Full-Stack Developer", "Frontend Developer", "Software Developer"];
 
   // Predefined values for background elements to avoid hydration mismatch
   const backgroundElements = [
@@ -115,7 +115,7 @@ export default function Home() {
   // Handle resume download
   const handleDownload = () => {
     const link = document.createElement("a");
-    link.href = "/harshita_resume.pdf";
+    link.href = "/Harshita_CV.pdf";
     link.download = "Harshita_Upreti_Resume.pdf";
     document.body.appendChild(link);
     link.click();
@@ -167,25 +167,25 @@ export default function Home() {
       lowerMessage.includes("tech") ||
       lowerMessage.includes("stack")
     ) {
-      return "Harshita has expertise in:\n\n• Frontend: HTML, CSS, JavaScript, React, Next.js, Bootstrap\n• Backend: Node.js, Express.js, PHP, Python, Django, C#\n• Databases: MySQL, MS SQL, PostgreSQL, MongoDB\n• AI/ML: Python, NumPy, Pandas, Scikit-learn, TensorFlow, PyTorch\n• Tools: VS Code, Jupyter Notebook, Git/GitHub\n\nCheck out the Skills section for more details!";
+      return "Harshita has expertise in:\n\n• Programming: Python, C# .NET, JavaScript, PHP, HTML5, CSS3\n• Frontend: React, Next.js, Bootstrap, Responsive Design, Redux/Context API\n• Backend: Node.js, Express.js, Flask, Django, REST API, CRUD, Auth\n• Databases: MySQL, PostgreSQL, MongoDB, MS SQL\n• AI/ML: NumPy, Pandas, Matplotlib, Scikit-learn, TensorFlow, PyTorch\n• Tools: Git/GitHub, VS Code, Jupyter Notebook, Anaconda, Figma\n\nCheck out the Skills section for more details!";
     } else if (
       lowerMessage.includes("experience") ||
       lowerMessage.includes("work") ||
       lowerMessage.includes("intern")
     ) {
-      return "Harshita has professional experience in:\n\n1. ERP & Business Application/Web Development Intern at Phoenix Contact India\n2. Web Development Intern at Wap Venture (Remote)\n3. Web Development Intern at Edyyo Digital Solution (Remote)\n\nShe has worked on ERP customization, web application development, and cross-functional team collaboration. See the Experience section for more details!";
+      return "Harshita has professional experience in:\n\n1. Software/Web Development Intern at Phoenix Contact India (Jul 2025 - Present)\n2. Web Development Intern (Sep 2024 - Jun 2025)\n3. Web Development Intern (Jun 2024 - Aug 2024)\n\nShe has worked on React-based applications, backend API integrations, and Agile/Scrum methodologies. See the Experience section for more details!";
     } else if (
       lowerMessage.includes("project") ||
       lowerMessage.includes("work")
     ) {
-      return "Harshita has built several impressive projects:\n\n• College ERP Management System (HTML, CSS, PHP, MySQL)\n• Employee Attrition Prediction System (Python, ML)\n• Financial Expense Tracker with Prediction (React, Flask, Python)\n• E-Commerce Platform with Recommendation Engine (React, Node.js, MongoDB)\n\nYou can find all projects with descriptions in the Projects section!";
+      return "Harshita has built several impressive projects:\n\n• ERP Management System (HTML, CSS, PHP, MySQL)\n• Financial Expense Tracker with ML (React, Flask, Python)\n• Employee Attrition Prediction (Python ML)\n• Fashion E-commerce UI/UX (Figma/Adobe XD)\n\nYou can find all projects with descriptions in the Projects section!";
     } else if (
       lowerMessage.includes("contact") ||
       lowerMessage.includes("email") ||
       lowerMessage.includes("phone") ||
       lowerMessage.includes("reach")
     ) {
-      return "You can reach Harshita at:\n\n• Email: harshitaupreti07@gmail.com\n• Phone: 8126963928\n\nFeel free to send a message through the Contact section or connect on social media!";
+      return "You can reach Harshita at:\n\n• Email: harshitaupreti07@gmail.com\n• Phone: 8126963928\n• LinkedIn: linkedin.com/in/harshita12\n• GitHub: github.com/harshitaupr12\n\nFeel free to send a message through the Contact section or connect on social media!";
     } else if (lowerMessage.includes("resume") || lowerMessage.includes("cv")) {
       return "You can download Harshita's resume by clicking the 'Download Resume' button in the hero section. Would you like me to guide you there?";
     } else if (
@@ -193,13 +193,13 @@ export default function Home() {
       lowerMessage.includes("degree") ||
       lowerMessage.includes("college")
     ) {
-      return "Harshita is pursuing her education in Computer Science/IT field with a focus on web development and software engineering. She has built a strong foundation in both theoretical concepts and practical applications.";
+      return "Harshita is pursuing B.Tech in Computer Science and Engineering (Artificial Intelligence) from Noida Institute of Engineering and Technology. She completed her senior secondary and high school from Dayawati Modi Public School (CBSE).";
     } else if (
       lowerMessage.includes("hobby") ||
       lowerMessage.includes("interest") ||
       lowerMessage.includes("passion")
     ) {
-      return "Harshita is passionate about web development, problem-solving, and continuously learning new technologies. She enjoys building projects that solve real-world problems and enhance user experiences.";
+      return "Harshita is passionate about full-stack development, problem-solving, and continuously learning new technologies. She enjoys building scalable applications and working on AI/ML projects.";
     } else {
       return "I'm not sure I understand. You can ask me about Harshita's:\n\n• Skills and technologies\n• Work experience\n• Projects\n• Education\n• How to contact her\n\nWhat would you like to know?";
     }
@@ -250,104 +250,89 @@ export default function Home() {
 
   const colors = darkMode ? darkColors : lightColors;
 
-  // Updated projects data with 4 projects
+  // Updated projects data from resume
   const projects = [
     {
-      title: "College ERP Management System",
-      desc: "Designed and implemented a comprehensive ERP solution for colleges with modules for student registration, attendance tracking, fee management, and academic records.",
+      title: "ERP Management System",
+      desc: "Full-stack application with responsive frontend + backend modules for student records, attendance, and fees management.",
       tech: "HTML, CSS, PHP, MySQL",
       link: "#",
     },
     {
-      title: "Employee Attrition Prediction System",
-      desc: "Built a machine learning model to predict employee resignation likelihood using performance, experience, and satisfaction data.",
-      tech: "Python, Pandas, NumPy, Scikit-learn, Matplotlib",
+      title: "Financial Expense Tracker",
+      desc: "React frontend dashboard integrated with Flask backend and ML-based expense prediction APIs.",
+      tech: "React, Flask, Python (ML)",
       link: "#",
     },
     {
-      title: "Financial Expense Tracker with Prediction",
-      desc: "Developed a web-based application to track monthly expenses, categorize spending, and predict future expenses using ML algorithms.",
-      tech: "React, Flask, Python, MySQL",
+      title: "Employee Attrition Prediction",
+      desc: "Machine learning project with data preprocessing, model training, and interactive dashboard for employee attrition analysis.",
+      tech: "Python ML, Data Processing, Model Training",
       link: "#",
     },
     {
-      title: "E-Commerce Platform with Recommendation Engine",
-      desc: "Created a full-stack e-commerce website with personalized product recommendations based on user behavior and preferences.",
-      tech: "React, Node.js, MongoDB, TensorFlow.js",
+      title: "Fashion E-commerce UI/UX",
+      desc: "Mobile-first design with frontend API integration, created using Figma/Adobe XD for optimal user experience.",
+      tech: "Figma, Adobe XD, Mobile-first Design",
       link: "#",
     },
   ];
 
   const experiences = [
     {
-      role: "ERP & Business Application / Web Development Intern",
+      role: "Software / Web Development Intern",
       company: "Phoenix Contact India Pvt. Ltd.",
-      period: "Full-time, Onsite",
+      period: "Jul 2025 – Present | Onsite, Full-time",
       points: [
-        "Working on ERP modules customization and integration to streamline business processes",
-        "Collaborating with cross-functional teams to develop web applications",
-        "Implementing automation solutions to enhance efficiency in reporting and data management",
+        "Developed and maintained React-based web applications with backend API integrations",
+        "Built reusable components and optimized frontend performance for scalability",
+        "Worked in Agile/Scrum team, contributing to sprint planning, code reviews, and feature delivery",
       ],
     },
     {
       role: "Web Development Intern",
-      company: "Wap Venture",
-      period: "Remote",
+      company: "",
+      period: "Sep 2024 – Jun 2025",
       points: [
-        "Developed and maintained responsive websites ensuring seamless user experience",
-        "Collaborated with cross-functional teams to design user-friendly interfaces",
-        "Worked on project development, version control, and iterative updates",
+        "Built responsive React + HTML/CSS websites and integrated backend APIs",
+        "Followed Agile methodology for iterative development and project delivery",
       ],
     },
     {
       role: "Web Development Intern",
-      company: "Edyyo Digital Solution",
-      period: "Remote",
+      company: "",
+      period: "Jun 2024 – Aug 2024",
       points: [
-        "Conducted market research to identify emerging trends and consumer preferences",
-        "Created engaging content for various platforms ensuring brand consistency",
-        "Assisted in WordPress development and optimization tasks",
+        "Contributed to WordPress site development and frontend optimization",
+        "Worked on website maintenance and performance improvements",
       ],
     },
   ];
 
   const skills = [
     {
+      category: "Programming",
+      items: ["Python", "C# .NET", "JavaScript", "PHP", "HTML5", "CSS3"],
+    },
+    {
       category: "Frontend",
-      items: ["HTML", "CSS", "JavaScript", "React", "Next.js", "Bootstrap"],
+      items: ["React", "Next.js", "Bootstrap", "Responsive Design", "Redux/Context API", "Tailwind CSS"],
     },
     {
       category: "Backend",
-      items: ["Node.js", "Express.js", "PHP", "Python", "Django", "C#"],
+      items: ["Node.js", "Express.js", "Flask", "Django", "REST API", "CRUD", "Auth"],
     },
     {
       category: "Databases",
-      items: ["MySQL", "MS SQL", "PostgreSQL", "MongoDB"],
+      items: ["MySQL", "PostgreSQL", "MongoDB", "MS SQL"],
     },
     {
-      category: "AI/ML",
-      items: [
-        "Python",
-        "NumPy",
-        "Pandas",
-        "Scikit-learn",
-        "TensorFlow",
-        "PyTorch",
-      ],
+      category: "AI/ML Libraries",
+      items: ["NumPy", "Pandas", "Matplotlib", "Scikit-learn", "TensorFlow", "PyTorch"],
     },
     {
-      category: "Tools",
-      items: ["VS Code", "Jupyter Notebook", "Anaconda", "WordPress", "Git/GitHub"],
-    },
-    {
-      category: "Soft Skills",
-      items: [
-        "Problem Solving",
-        "Team Collaboration",
-        "Adaptability",
-        "Time Management",
-        "Critical Thinking",
-      ],
+      category: "Tools & Methodologies",
+      items: ["Git/GitHub", "VS Code", "Jupyter Notebook", "Agile/Scrum", "SDLC", "Figma"],
     },
   ];
 
@@ -1042,13 +1027,13 @@ export default function Home() {
             viewport={{ once: true }}
           >
             <p className="mb-4">
-              I am a **full-stack developer** with a strong background in both frontend and backend technologies. My passion lies in crafting elegant and efficient solutions to complex problems. I thrive on building responsive web applications and scalable backend systems.
+              I am a <strong>Software Developer</strong> with expertise in <strong>Full-Stack, Frontend, and Backend</strong> development. Skilled in <strong>React, Node.js, Python, C# .NET, PHP, HTML/CSS, REST APIs</strong>, with strong foundation in <strong>Data Structures, Algorithms, and Problem-Solving</strong>.
             </p>
             <p className="mb-4">
-              Throughout my journey, I've had the opportunity to work on diverse projects, from **ERP customization** and **web development** to **machine learning applications**. My goal is to create impactful and user-friendly digital experiences.
+              Experienced in <strong>Agile/Scrum</strong> teams and familiar with <strong>SDLC</strong> best practices. I'm actively seeking opportunities in <strong>SDE, Fullstack, and Frontend engineering</strong> roles, building scalable and user-focused applications.
             </p>
             <p>
-              I am a quick learner and a team player, always eager to take on new challenges and contribute to innovative projects. I believe in continuous learning and staying up-to-date with the latest industry trends.
+              My passion lies in creating elegant solutions to complex problems and continuously learning new technologies to stay at the forefront of web development.
             </p>
           </motion.div>
         </section>
@@ -1125,7 +1110,7 @@ export default function Home() {
                 </h3>
                 <p className="text-gray-700 dark:text-gray-300 mb-4">{project.desc}</p>
                 <p className="text-sm font-medium" style={{ color: colors.lightText }}>
-                  **Technologies:** {project.tech}
+                  <strong>Technologies:</strong> {project.tech}
                 </p>
                 <a
                   href={project.link}
@@ -1206,12 +1191,23 @@ export default function Home() {
             <p className="text-lg mb-6" style={{ color: colors.lightText }}>
               I'm always open to new opportunities and collaborations. Feel free to reach out!
             </p>
+            <div className="space-y-4 mb-8">
+              <p className="text-lg">
+                <strong>Email:</strong> harshitaupreti07@gmail.com
+              </p>
+              <p className="text-lg">
+                <strong>Phone:</strong> 8126963928
+              </p>
+              <p className="text-lg">
+                <strong>Portfolio:</strong> Available upon request
+              </p>
+            </div>
             <a
               href="mailto:harshitaupreti07@gmail.com"
               className="px-8 py-3 rounded-full text-white font-semibold shadow-lg transition-all duration-300 transform hover:scale-105 hover:shadow-2xl active:scale-95"
               style={{ background: `linear-gradient(135deg, ${colors.primary}, ${colors.secondary})` }}
             >
-              harshitaupreti07@gmail.com
+              Send Email
             </a>
           </motion.div>
         </section>
@@ -1225,26 +1221,26 @@ export default function Home() {
         <p className="text-sm" style={{ color: colors.lightText }}>
           &copy; {new Date().getFullYear()} Harshita Upreti. All Rights Reserved.
         </p>
-        <div className="flex justify-center space-x-4 mt-4 text-xl">
+        <div className="flex justify-center space-x-4 mt-4">
           <a
-            href="https://github.com/harshitaupreti"
+            href="https://github.com/harshitaupr12"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="GitHub Profile"
             style={{ color: colors.text }}
-            className="hover:text-purple-500 transition-colors"
+            className="hover:text-purple-500 transition-colors text-lg"
           >
-            <i className="fab fa-github"></i>
+            GitHub
           </a>
           <a
-            href="https://linkedin.com/in/harshita-upreti-43b95a201"
+            href="https://linkedin.com/in/harshita12"
             target="_blank"
             rel="noopener noreferrer"
             aria-label="LinkedIn Profile"
             style={{ color: colors.text }}
-            className="hover:text-purple-500 transition-colors"
+            className="hover:text-purple-500 transition-colors text-lg"
           >
-            <i className="fab fa-linkedin"></i>
+            LinkedIn
           </a>
         </div>
       </footer>
